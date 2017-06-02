@@ -1,0 +1,16 @@
+html,body{ max-width: 480px; padding: 0;margin: 0 auto; height: 100%;}
+.head{ height: 200px; background-image: url(xyzs.png); background-repeat: no-repeat; background-size:100% auto; position: relative;}
+.head a{ position: relative;z-index: 10; padding-top: 20px; display: block}
+
+
+.head .logo{ padding: 20px 0 0 20px;}
+.head h2{ position: absolute; bottom:-9px; color: #fff; font-size:40px; font-family: "microsoft yahei"; font-weight: 400;  padding: 0 0 0 20px; margin: 0}
+.info{ padding:20px; position: absolute; height: 100%; padding-top: 120px;top: 0; box-sizing: border-box; width: 100%;max-width: 480px;}
+.submit{ width: 100%;max-width: 480px; padding:20px 0 ; box-sizing:border-box; float: left}
+.submit a{ display: block; width: 100%;  height: 46px;line-height: 46px; text-align: center; border-radius: 3px; color: #fff; background-color: #f90; border:none; font-size: 20px; text-decoration: none}
+.field { height: 40px; line-height: 40px; border-bottom: 1px dotted #e0e0e0; font-family: 'microsoft yahei'; font-size: 16px; font-weight: 100;}
+.field .label{ width: auto; display: inline;line-height: 40px; float: left; text-align: center; color: #999; font-size: 14px;}
+.field .field-control{ width:auto; float:left; color: #666}
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { *zoom:1;
+}

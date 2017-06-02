@@ -1,0 +1,92 @@
+<include file="Public/header"/>
+<body>
+<div class="header">	<h2>消防文库</h2>
+</div>
+<div class="pagetitle">用户注册</div>
+<div class="main">
+	<div class="login">
+		<form action="{:U('Index/index/index')}" method="post" id="loginForm">
+			
+			<div class="title">
+				用&nbsp;户&nbsp;名:
+				<input type="text" name="userName"  placeholder="用户名">
+			</div>
+			<div class="info">
+				密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:
+				<input type="password" name="mem_password" placeholder="密  码">
+			</div>
+			<div class="info">
+				重输密码:
+				<input type="password" name="rep_password" placeholder="重复密码">
+			</div><div>
+				<span id="error_msg" class="hidden"></span>
+			</div>
+			<div>
+					<input type="button" class="btn" value="注册" id="login">
+			</div>
+
+		</form>
+	</div>
+</div>
+<script>
+	var error_box = $("#error_msg");
+	$("#loginForm").on("click","#login",function () {
+		var $userName = $("input[name='userName']").val();
+		var $mem_password = $("input[name='mem_password']").val();
+		var $rep_password = $("input[name='rep_password']").val();
+		if($userName == ''){
+			showError("用户名不能为空");
+			return false
+		}
+		if($userName.length >=30){
+			showError("用户名长度不能超过30");
+			return false
+		}
+		if($mem_password == ''){
+			showError("密码不能为1空");
+			return false
+		}
+		if($mem_password.length < 6){
+			showError("密码长度不能小于6位");
+			return false
+		}
+		if($rep_password == ''){
+			showError("重复密码不能为空");
+			return false
+		}
+		if($rep_password !==  $mem_password){
+			showError("两次密码不一致");
+			return false
+		}
+		var registerData ={"userName":$userName,"mem_password":$mem_password,"rep_password":$rep_password};
+		verifyOption = {
+			url:"{:U('Index/Login/doregister')}",
+			type:"post",
+			data:registerData,
+			dataType:"json",
+			success:function (res) {
+				console.log(res);
+				if(res.status == 1){
+					window.location.href =res.return_url;
+				}else {
+					showError(res.error)
+				}
+			}
+		};
+		$.ajax(verifyOption);
+	});
+
+	function showError(error) {
+		error_box.text(error);
+		error_box.show();
+		setTimeout(function () {
+			error_box.hide()
+		},5000)
+	}
+</script>
+	<div class="footer"><img src="/Public/index/img/logo.jpg"/>
+		<span>重庆市公安消防总队制</span><b>2017</b>
+		
+</div>
+</body>
+</html>
